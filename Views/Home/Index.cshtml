@@ -1,0 +1,70 @@
+﻿@model IEnumerable<PracticleDemoApp.Models.Bee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@*<script src="~/lib/jquery/dist/jquery.js"></script>*@
+<h1>Index</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Name
+            </th>
+            <th>
+                Health
+            </th>
+            <th>
+                Status
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.HiddenFor(modelItem => item.id)
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.health)<span>%</span>
+            </td>
+            <td>
+                @if (@item.isDead)
+                {
+                    <p>Dead</p>
+                }
+                else
+                {
+                    <p>Alive</p>
+                }
+            </td>
+            <td>
+                @*<button name="btnDamage" id="@item.id">Damage</button>*@
+                @Html.ActionLink("Damage","Index", new { id = item.id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<script>
+    //$(document).ready(function(){
+    //    $("[name='btnDamage']").click(function (e) {
+    //        debugger
+    //        var id = $(e.target)[0].id
+    //        $.ajax({
+    //            type: "get",
+    //            url: "https://localhost:44331/Home/Index?id="+id,
+    //            success: function () {
+
+    //            },
+    //            error: function () {
+
+    //            }
+    //        })
+    //    })
+    //});
+</script>
