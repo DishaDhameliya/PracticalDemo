@@ -85,6 +85,8 @@ namespace PracticleDemoApp.Models
             int decrease = rnd.Next(0, 80);
             Bee findRecord = lstDynamic.Where(x => x.id == id).FirstOrDefault();
             findRecord.health -= decrease;
+            if (findRecord.health <= 0)
+                findRecord.health = 0;
             return lstDynamic;
         }
     }

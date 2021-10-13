@@ -11,8 +11,18 @@ namespace PracticleDemoApp.Models
 
         public string name { get; set; }
 
-        [Range(1, 100)]
-        public float health { get; set; }
+        private float _health { get; set; }
+        public float health
+        {
+            get
+            {
+                return _health;
+            }
+            set
+            {
+                _health = value;
+            }
+        }
         public Drone(int idValue, string nameValue, float healthValue)
         {
             id = idValue;
@@ -30,7 +40,7 @@ namespace PracticleDemoApp.Models
         {
             get
             {
-                return health < 50 ? true : false;
+                return _health < 50 ? true : false;
             }
             set { }
         }

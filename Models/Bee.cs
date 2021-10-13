@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace PracticleDemoApp.Models
 {
-    public  interface Bee
+    public  interface  Bee
     {
         public int id { get; set; }
         public string name { get; set; }
         public float health { get; set; }        
         public Boolean isDead { get; set; }
 
-        public List<Bee> Damage(int percentage);
+        public  List<Bee> Damage(int percentage);
     }
 
    

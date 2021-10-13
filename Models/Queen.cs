@@ -12,14 +12,25 @@ namespace PracticleDemoApp.Models
         public string name { get; set; }
 
         [Range(1, 100)]
-        public float health { get; set; }
+        private float _health { get; set; }
+        public float health
+        {
+            get
+            {
+                return _health;
+            }
+            set
+            {
+                _health = value;
+            }
+        }
         public Queen(int idValue, string nameValue, float healthValue)
         {
             id = idValue;
             name = nameValue;
             health = healthValue;
         }
-        public List<Bee> Damage(int percentage)
+        public  List<Bee> Damage(int percentage)
         {
             if (!isDead)
                 return Call.updateList(percentage);
@@ -30,7 +41,7 @@ namespace PracticleDemoApp.Models
         {
             get
             {
-                return health < 20 ? true : false;
+                return _health < 20 ? true : false;
             }
             set { }
         }
